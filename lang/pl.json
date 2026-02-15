@@ -1,0 +1,206 @@
+{
+  "metadata": {
+    "name": "\uD83C\uDDF5\uD83C\uDDF1 - Polski",
+    "translation_author": ""
+  },
+  "cmd_make_quote": {
+    "name": "stworz_cytat",
+    "description": "Utwórz cytat!",
+    "p1_name": "uzytkownik",
+    "p1_description": "Kogo cytujesz",
+    "p2_name": "cytat",
+    "p2_description": "Treść cytatu"
+  },
+  "cmd_random_quote": {
+    "name": "losowy_cytat",
+    "description": "Wylosuj cytat!",
+    "p1_name": "uzytkownik",
+    "p1_description": "Jeśli wybrane, losowane będą tylko cytaty tego użytkownika"
+  },
+  "quotes": {
+    "generated": "_Utworzony cytat:_",
+    "generated_on": "_Cytat został wysłany na %channel%_:",
+    "drawn": "Wylosowany cytat:",
+    "other_channel": "_Cytaty będą wysyłane na kanał %channel%_",
+    "channel_cleared": "_Cytaty będą wysyłane na kanał, w którym użyto komendy_",
+    "channel_error": "Brak uprawnień do kanału lub kanał nie istnieje, %channel%.\nWylosowany cytat:",
+    "footer": "Utworzony przez %creator% na %guild%",
+    "empty_database": "Brak cytatów w bazie danych.",
+    "empty_database_user": "Brak cytatów tego użytkownika w bazie danych.",
+    "get_database_failed": "Nie udało się pobrać cytatu."
+  },
+
+  "cmd_stats": {
+    "name": "statystyka",
+    "description": "Zobacz statystyki cytatów",
+    "p1_name": "uzytkownik",
+    "p1_description": "Cytaty którego użytkownika chcesz zobaczyć"
+  },
+  "stats": {
+    "title": "**Statystyki cytatów %user%**",
+    "description": "- **Liczba cytatów:** _%quotes%_\n- **Utworzone cytaty:** _%created%_"
+  },
+
+  "cmd_settings": {
+    "name": "ustawienia",
+    "description": "Kontener podkomend ustawień"
+  },
+  "cmd_settings_help": {
+    "name": "pomoc",
+    "description": "Opis ustawień bota dla serwera"
+  },
+  "settings_help": {
+    "cmd1_description": "Wyślij tę wiadomość"
+  },
+  "cmd_set_channel": {
+    "name": "ustaw_kanal",
+    "description": "Zmień kanał tekstowy, na który wysyłane są obrazy z cytatami",
+    "p1_name": "kanal",
+    "p1_description": "Jeśli nie wybrano, grafiki z cytatami będą wysyłane na kanał, w którym użyto komendy"
+  },
+    "cmd_set_lang": {
+    "name": "zmien_jezyk",
+    "description": "Zmień język używany przez bota na twoim serwerze",
+    "p1_name": "jezyk",
+    "p1_description": "Wybierz jezyk"
+  },
+  "set_lang": {
+    "message": "_Język zmieniony na: **%lang%**_"
+  },
+
+  "cmd_dummy_image": {
+    "name": "testowy_obraz",
+    "description": "Przykład, jak grafiki z cytatatami będą generowane na tym serwerze",
+    "p1_name": "tekst",
+    "p1_description": "Tekst, który będzie używany przy generowaniu testowych grafik z cytatami"
+  },
+  "dummy_image": {
+    "message": "Tak będą wyglądały cytaty generowane na tym serwerze:"
+  },
+
+  "cmd_set_color": {
+    "name": "ustaw_kolor",
+    "description": "Zmień kolor akcentu używany przez bota przy generowaniu grafik z cytatami na twoim serwerze",
+    "p1_name": "kod_hex",
+    "p2_description": "Wprowadź kod koloru w formacie hex"
+  },
+  "set_color": {
+    "hex_correct": "Kolor został pomyślnie zmieniony na %color%",
+    "hex_error": "Podany kod koloru jest niepoprawny",
+    "set_default": "Kolor ustawiony na domyślny"
+  },
+
+  "cmd_set_background": {
+    "name": "ustaw_tlo",
+    "description": "Zmień tło używane przez bota podczas generowania grafik z cytatami na Twoim serwerze",
+    "p1_name": "url",
+    "p2_description": "Bezpośredni link do obrazu (kończący się na .png). Zaleca się użycie imgur.com, zalecana rozdzielczość 1280×720[px]"
+  },
+  "set_background": {
+    "error": "Podany URL jest nieprawidłowy, powinien zaczynać się od https://, oraz kończyć rozszerzniem .png, .jpeg lub .jpg.",
+    "changed": "Tło dla twojego serwera zostało zmienione, zmień tryb i użyj komendy testowej, aby wygenerować obrazy z cytatami i zweryfikować zmiany.",
+    "clear": "Dane tła dla twojego serwera zostały usunięte, podczas generowania będzie używane domyślne tło"
+  },
+
+  "cmd_set_bg_mode": {
+    "name": "tryb_tla",
+    "description": "Ustaw jakie tło bedą miały grafiki cytatów generowane na twoim serwerze.",
+    "p1_name": "tryb",
+    "p2_description": "Wybierz tryb generowania tła",
+    "c1_name0": "'Avatar' - Tło na podstawie avataru użytkownika którego dotyczy cytat",
+    "c1_name1": "'Plik' - Domyślne tło bota",
+    "c1_name2": "'URL' - Jeśli użyto komendy do dodania tła, będzie ono używane, w przeciwnym wypadku, 'Avatar'"
+  },
+  "set_bg_mode": {
+    "message": "Tryb generowania cytatów zmieniony na **%mode%**",
+    "mode0": "Avatar",
+    "mode1": "Plik",
+    "mode2": "URL"
+  },
+
+  "cmd_set_background_postprocess": {
+    "name": "zmien_postprocess",
+    "description": "Zdecyduj, czy bot powinien przetwarzać tło URL używane do generowania cytatów.",
+    "p1_name": "postprocess",
+    "p1_description": "Włącz lub wyłącz operacje post-processing'u",
+    "c1_name0": "Wyłącz",
+    "c1_name1": "Włącz"
+  },
+  "set_background_postprocess": {
+    "message0": "Twoje zdjęcie URL w tle generowanych grafik z cytatami na tym serwerze nie będzie przetwarzane",
+    "message1": "Twoje zdjęcie URL w tle generowanych grafik z cytatami na tym serwerze będzie przetwarzane"
+  },
+
+  "cmd_stats_top": {
+    "name": "statystyka_top",
+    "description": "Zobacz top 10 użytkowników lub twórców",
+    "p1_name": "tryb",
+    "p1_description": "Wybierz tryb",
+    "c1_name0": "Użytkownicy",
+    "c1_name1": "Twórcy"
+  },
+  "stats_top": {
+    "title0": "Top 10 użytkowników",
+    "title1": "Top 10 twórców",
+    "description0": "Najczęściej cytowani użytkownicy",
+    "description1": "Najwięcej utworzonych cytatów",
+    "crotch0": "_Występuje w **%count%** cytatach_",
+    "crotch1": "_Utworzył(a) **%count%** cytatów_"
+  },
+
+  "cmd_set_daily_quote": {
+    "name": "ustaw_codzienny_cytat",
+    "description": "Na wskazanym kanale, będzie wysłany losowy cytat",
+    "p1_name": "kanal",
+    "p1_description": "Kanał na który będzie wysyłany losowy cytat",
+    "p2_name": "godzina",
+    "p2_description": "UTC - Godzina o której będzie wysłany cytat",
+    "p3_name": "minuta",
+    "p3_description": "Minuta o której będzie wysyłany cytat",
+    "p4_name": "strefa_czasowa",
+    "p4_description": "Strefa czasowa względem czasu UTC",
+    "p5_name": "tryb",
+    "p5_description": "Codziennie, a może konkretny dzień?",
+    "p6_name": "rola",
+    "p6_description": "Jeśli wybrane, ta rola będzie oznaczana",
+    "c1_name0": "Codziennie",
+    "c1_name1": "Tylko w Poniedziałki",
+    "c1_name2": "Tylko w Wtorki",
+    "c1_name3": "Tylko w Środy",
+    "c1_name4": "Tylko w Czwartki",
+    "c1_name5": "Tylko w Piątki",
+    "c1_name6": "Tylko w Soboty",
+    "c1_name7": "Tylko w Niedziele"
+  },
+  "set_daily_quote": {
+    "message": "**Wybrane ustawienia:**\nKanał: %channel%\nGodzina: %hour%:%minute% + %timezone%\nTryb: %mode%\nPing: %ping%",
+    "empty_ping": "brak"
+  },
+
+  "errors": {
+    "no_dm": "Ta komenda nie może być używana w wiadomościach prywatnych.",
+    "no_guild": "Ta komenda działa tylko na serwerze.",
+    "no_perm": "Nie masz wymaganych uprawnień, aby użyć tej komendy.",
+    "bot_no_perm": "Bot nie ma wymaganych uprawnień, aby wykonać tę komendę.",
+    "missing_role": "Musisz mieć rolę %role%, aby użyć tej komendy.",
+    "bot_missing_role": "Bot musi mieć rolę %role%, aby użyć tej komendy.",
+    "command_not_found": "Nie znaleziono takiej komendy.",
+    "user_input": "Nieprawidłowe dane wejściowe. Sprawdź składnię komendy.",
+    "bad_argument": "Jeden z argumentów jest nieprawidłowy.",
+    "bad_union_argument": "Nie udało się dopasować żadnego poprawnego typu argumentu.",
+    "missing_required_argument": "Brakuje wymaganego argumentu.",
+    "too_many_arguments": "Podano zbyt wiele argumentów.",
+    "cooldown": "Ta komenda jest obecnie w czasie oczekiwania. Spróbuj ponownie za %cooldown% sekund.",
+    "disabled": "Ta komenda jest obecnie wyłączona.",
+    "dm_only": "Tę komendę można używać tylko w wiadomościach prywatnych.",
+    "check_failure": "Nie spełniasz warunków wymaganych do użycia tej komendy.",
+    "invoke_error": "Wystąpił błąd podczas wykonywania komendy.",
+    "forbidden": "Bot nie ma uprawnień do wykonania tej operacji.",
+    "http": "Wystąpił błąd podczas komunikacji z Discordem.",
+    "not_found": "Nie znaleziono zasobu. Mógł zostać usunięty.",
+    "invalid_argument": "Podano nieprawidłowy argument.",
+    "login_failure": "Nie udało się zalogować. Sprawdź token bota.",
+    "connection_closed": "Połączenie z Discordem zostało niespodziewanie zamknięte.",
+    "unknown": "Wystąpił nieznany błąd."
+  }
+}

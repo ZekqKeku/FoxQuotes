@@ -1,0 +1,11 @@
+{
+  "bot": {
+    "token": "",
+    "id": 123
+  },
+  "discord": {
+    "supervisors": [
+      123
+    ]
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "metadata": {
+    "name": "\uD83C\uDDFA\uD83C\uDDF8 - English (USA)",
+    "translation_author": ""
+  },
+  "cmd_make_quote": {
+    "name": "make_quote",
+    "description": "Create a quote!",
+    "p1_name": "user",
+    "p1_description": "Whom you quote",
+    "p2_name": "quote",
+    "p2_description": "Content"
+  },
+  "cmd_random_quote": {
+    "name": "random_quote",
+    "description": "Draw a quote!",
+    "p1_name": "user",
+    "p1_description": "If selected, quotes from only that user will be drawn"
+  },
+  "quotes": {
+    "generated": "_Created quote:_",
+    "generated_on": "_Quote sented to the %channel%_:",
+    "drawn": "Randomly elected quote:",
+    "other_channel": "_Quotes will be sent to the %channel%_",
+    "channel_cleared": "_Quotes will be sent to the channel where the command was used_",
+    "channel_error": "No permissions for the channel, or the channel does not exist, %channel%.\nQuote drawn:",
+    "footer": "Created by %creator% on %guild%",
+    "empty_database": "No quotes in the database.",
+    "empty_database_user": "No quotes for this user in the database.",
+    "get_database_failed": "The quote failed to download."
+  },
+
+  "cmd_stats": {
+    "name": "stat",
+    "description": "View statistics on quotes",
+    "p1_name": "user",
+    "p1_description": "Whose quotes you want to see"
+  },
+  "stats": {
+    "title": "**%user%'s quotes statistics**",
+    "description": "- **Number of quotes:** _%quotes%_\n- **Created quotes:** _%created%_"
+  },
+
+  "cmd_settings": {
+    "name": "settings",
+    "description": "Settings subcommand container"
+  },
+  "cmd_settings_help": {
+    "name": "help",
+    "description": "Description of guild bot configuration settings"
+  },
+  "settings_help": {
+    "cmd1_description": "Send this message"
+  },
+  "cmd_set_channel": {
+    "name": "set_channel",
+    "description": "Change the text channel to which images with quotations are sent",
+    "p1_name": "channel",
+    "p1_description": "If empty, graphics with quotes will be sent to the channel where the command was used"
+  },
+  "cmd_set_lang": {
+    "name": "set_language",
+    "description": "Change the language the bot uses on your guild",
+    "p1_name": "language",
+    "p1_description": "Select language"
+  },
+  "set_lang": {
+    "message": "_The language is set to: **%lang%**_"
+  },
+
+  "cmd_dummy_image": {
+    "name": "dummy_image",
+    "description": "An example of how the citation graphics will be generated on this server",
+    "p1_name": "text",
+    "p1_description": "Text that will be used when generating test graphics quotes"
+  },
+  "dummy_image": {
+    "message": "This is how the quotes generated on this guild will look like:"
+  },
+
+  "cmd_set_color": {
+    "name": "set_color",
+    "description": "Change the accent color used by the bot when generating quotes graphics on your guild",
+    "p1_name": "hex_code",
+    "p2_description": "Enter the color code hex"
+  },
+  "set_color": {
+    "hex_correct": "Color successfully changed to %color%",
+    "hex_error": "The color code specified is incorrect",
+    "set_default": "Color set to default"
+  },
+
+  "cmd_set_background": {
+    "name": "set_background",
+    "description": "Change the background used by the bot when generating quotes graphics on your guild",
+    "p1_name": "url",
+    "p2_description": "Direct link to the image, (ending with .png). Recommended use imgur.com, recommended resolution 1280×720[px]"
+  },
+  "set_background": {
+    "error": "The URL given is incorrect, it should start with https://, and end with .png, .jpeg or .jpg extension.",
+    "changed": "Background for your guild changed, change mode and use the test command to generate images with quotes to verify the changes.",
+    "clear": "Background data for your guild removed, the default background will be used during generation"
+  },
+
+  "cmd_set_bg_mode": {
+    "name": "background_mode",
+    "description": "Set the background for the quote images generated on your guild.",
+    "p1_name": "mode",
+    "p2_description": "Choose the background generation mode",
+    "c1_name0": "'Avatar' - Background based on the avatar of the user to whom the quote belongs",
+    "c1_name1": "'File' - Default bot background",
+    "c1_name2": "'URL' - If a command to add a background has been used, it will be used, otherwise, 'Avatar'"
+  },
+  "set_bg_mode": {
+    "message": "Quotes generation mode, changed to **%mode%**",
+    "mode0": "Avatar",
+    "mode1": "File",
+    "mode2": "URL"
+  },
+
+  "cmd_set_background_postprocess": {
+    "name": "set_postprocess",
+    "description": "Decide if the bot should process your URL background used in generating quotes.",
+    "p1_name": "postprocess",
+    "p1_description": "Enable or disable post-processing operations",
+    "c1_name0": "Off",
+    "c1_name1": "On"
+  },
+  "set_background_postprocess": {
+    "message0": "Your URL image in the background of the generated quotes graphics on this guild  will not be processed",
+    "message1": "Your URL image in the background of the generated quotes graphics on this guild will be processed"
+  },
+
+  "cmd_stats_top": {
+    "name": "stats_top",
+    "description": "View top 10 quotes users or creators",
+    "p1_name": "mode",
+    "p1_description": "Select mode",
+    "c1_name0": "Users",
+    "c1_name1": "Creators"
+  },
+  "stats_top": {
+    "title0": "Top 10 users",
+    "title1": "Top 10 creators",
+    "description0": "Most quoted users",
+    "description1": "Most quotes created",
+    "crotch0": "_Is in **%count%** quotes_",
+    "crotch1": "_Created **%count%** quotes_"
+  },
+
+  "cmd_set_daily_quote": {
+    "name": "set_daily_quote",
+    "description": "A random quote will be sent to the specified channel",
+    "p1_name": "channel",
+    "p1_description": "The channel where the random quote will be sent",
+    "p2_name": "hour",
+    "p2_description": "UTC - The hour at which the quote will be sent",
+    "p3_name": "minute",
+    "p3_description": "The minute at which the quote will be sent",
+    "p4_name": "timezone",
+    "p4_description": "Timezone relative to UTC",
+    "p5_name": "mode",
+    "p5_description": "Every day or a specific day?",
+    "p6_name": "role",
+    "p6_description": "If selected, this role will be mentioned",
+    "c1_name0": "Every day",
+    "c1_name1": "Only on Mondays",
+    "c1_name2": "Only on Tuesdays",
+    "c1_name3": "Only on Wednesdays",
+    "c1_name4": "Only on Thursdays",
+    "c1_name5": "Only on Fridays",
+    "c1_name6": "Only on Saturdays",
+    "c1_name7": "Only on Sundays"
+  },
+  "set_daily_quote": {
+    "message": "**Selected settings:**\nChannel: %channel%\nTime: %hour%:%minute% + %timezone%\nMode: %mode%\nPing: %ping%",
+    "empty_ping": "none"
+  },
+
+  "errors": {
+    "no_dm": "This command cannot be used in private messages.",
+    "no_guild": "This command only works on a guilds.",
+    "no_perm": "You lack the required permissions to run this command.",
+    "bot_no_perm": "I don't have the required permissions to run this command.",
+    "missing_role": "You need the %role% role to use this command.",
+    "bot_missing_role": "I need the %role% role to use this command.",
+    "command_not_found": "Command not found.",
+    "user_input": "Invalid input. Please check the command usage.",
+    "bad_argument": "One of the arguments is incorrect.",
+    "bad_union_argument": "Could not match any valid input type.",
+    "missing_required_argument": "A required argument is missing.",
+    "too_many_arguments": "Too many arguments were provided.",
+    "cooldown": "This command is on cooldown. Try again in %cooldown% seconds.",
+    "disabled": "This command is currently disabled.",
+    "dm_only": "This command can only be used in private messages.",
+    "check_failure": "You do not meet the conditions to use this command.",
+    "invoke_error": "An error occurred while executing the command.",
+    "forbidden": "I don't have permission to perform this action.",
+    "http": "An unexpected error occurred while communicating with Discord.",
+    "not_found": "The requested resource was not found. It may have been deleted.",
+    "invalid_argument": "An invalid argument was passed to the command.",
+    "login_failure": "Failed to log in. Check your bot token.",
+    "connection_closed": "Connection to Discord was unexpectedly closed.",
+    "unknown": "An unknown error occurred."
+  }
+}
