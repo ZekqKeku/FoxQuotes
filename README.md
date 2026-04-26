@@ -38,8 +38,7 @@ Before starting, you must complete the `config.json` file located in the root di
 ```json
 {
   "bot": {
-    "token": "YOUR_BOT_TOKEN",
-    "id": YOUR_BOT_ID
+    "token": "YOUR_BOT_TOKEN"
   },
   "discord": {
     "supervisors": [
@@ -49,7 +48,6 @@ Before starting, you must complete the `config.json` file located in the root di
 }
 ```
 - `token`: The bot token obtained from the Discord Developer Portal.
-- `id`: Your application/bot's unique ID.
 - `supervisors`: A list of user IDs who have administrative permissions within the bot (optional).
 
 ## Commands
