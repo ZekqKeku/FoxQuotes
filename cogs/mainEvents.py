@@ -14,7 +14,7 @@ class MainEventsCog(commands.Cog):
         print("Client is ready.")
         print(f"Bot name: {self.client.user.name}")
         print(f"Bot id: {self.client.user.id}")
-        print(f"App id: {self.config.get_bot_id()} - (config file)")
+        print(f"App id: {self.client.user.id}")
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):

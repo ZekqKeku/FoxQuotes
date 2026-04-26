@@ -179,16 +179,11 @@ class FQdb:
 
     def getNumberOfQuotes(self, id=None, by_user=False, by_guild=False):
         if id:
-            if by_user and by_guild:
-                print(' > by_user and by_guild cannot be True at the same call, by_user forced to False')
-                by_user = False
-            elif not by_user and not by_guild:
-                print(' > by_user and by_guild cannot be False at the same call where id is not null, by_guild forced to True')
-                by_guild = True
-
             if by_user:
                 self.cursor.execute('SELECT count(*) FROM quotes WHERE user_id = ?', (id,))
             elif by_guild:
+                self.cursor.execute('SELECT count(*) FROM quotes WHERE guild_id = ?', (id,))
+            else:
                 self.cursor.execute('SELECT count(*) FROM quotes WHERE guild_id = ?', (id,))
         else:
             self.cursor.execute('SELECT count(*) FROM quotes')
@@ -257,8 +252,6 @@ class FQdb:
         if result:
             return result[0]
         return None
-
-        return self.cursor.fetchone()[0]
 
     def setGuildDailyChannel(self, guild_id, channel_id):
         self.cursor.execute('''
@@ -408,8 +401,6 @@ class FQdb:
         if result:
             return result[0]
         return None
-
-        return self.cursor.fetchone()[0]
 
     def getTopByUser(self, limit=10):
         self.cursor.execute('''

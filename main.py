@@ -1,10 +1,6 @@
-try:
-    from nextcord.ext import commands
-    from utils import FQutils, FQdatabase
-    import nextcord
-
-except:
-    raise RuntimeError('\n > Failed to load libraries!\n')
+import nextcord
+from nextcord.ext import commands
+from utils import FQutils, FQdatabase
 
 def main():
     database = FQdatabase.FQdb('./data', 'foxquotes.db')
@@ -36,8 +32,8 @@ if __name__ == '__main__':
 
 ###
 # to do
-# przebudowac genertor o tryby serwera, debudowe info
-# zblkowac użycia per dzień
-# usuwanie cyatatów CLI
+# przebudowac generator o tryby serwera, rozbudowe info
+# zablokowac użycia per dzień
+# usuwanie cytatów CLI
 # report cytatów
 # daily cytaty - event

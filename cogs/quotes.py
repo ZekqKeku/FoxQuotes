@@ -6,7 +6,7 @@ from io import BytesIO
 from random import randint
 import datetime
 
-from utils import FQutils, FQdatabase, checs
+from utils import FQutils, FQdatabase, Checks
 from lang import lang
 
 class QuotesCog(commands.Cog):
@@ -21,7 +21,7 @@ class QuotesCog(commands.Cog):
         name_localizations=lang.localizations("cmd_make_quote", "name"),
         description_localizations=lang.localizations("cmd_make_quote", "description"),
     )
-    @checs.onlyGuild()
+    @Checks.onlyGuild()
     async def make_quote(self, interaction: Interaction,
         user: nextcord.User = SlashOption(
             name=lang("cmd_make_quote", "p1_name", "en-US"),
@@ -81,9 +81,12 @@ class QuotesCog(commands.Cog):
             "date": datetime.datetime.now(),
             "footer": footer_text,
             "ping_map": ping_map,
-            "ping_color": self.database.getGuildColor(interaction.guild.id)
+            "ping_color": self.database.getGuildColor(interaction.guild.id),
+            "background_mode": self.database.getBackgroundMode(interaction.guild.id),
+            "background_url": self.database.getGuildBgUrl(interaction.guild.id),
+            "bg_postproces": self.database.getGuildBgPost(interaction.guild.id)
         }
-        result_img = self.image_tool.generate_image(image_data)
+        result_img = await self.image_tool.generate_image(image_data)
 
         buffer = BytesIO()
         result_img.save(buffer, format="PNG")
@@ -122,7 +125,7 @@ class QuotesCog(commands.Cog):
         name_localizations=lang.localizations("cmd_random_quote", "name"),
         description_localizations=lang.localizations("cmd_random_quote", "description")
     )
-    @checs.onlyGuild()
+    @Checks.onlyGuild()
     async def random_quote(
         self,
         interaction: Interaction,
@@ -210,9 +213,12 @@ class QuotesCog(commands.Cog):
             "date": date[:4],
             "footer": footer_text,
             "ping_map": ping_map,
-            "ping_color": self.database.getGuildColor(interaction.guild.id)
+            "ping_color": self.database.getGuildColor(interaction.guild.id),
+            "background_mode": self.database.getBackgroundMode(interaction.guild.id),
+            "background_url": self.database.getGuildBgUrl(interaction.guild.id),
+            "bg_postproces": self.database.getGuildBgPost(interaction.guild.id)
         }
-        result_img = self.image_tool.generate_image(image_data)
+        result_img = await self.image_tool.generate_image(image_data)
 
         buffer = BytesIO()
         result_img.save(buffer, format="PNG")
@@ -251,7 +257,7 @@ class QuotesCog(commands.Cog):
         name_localizations=lang.localizations("cmd_stats", "name"),
         description_localizations=lang.localizations("cmd_stats", "description")
     )
-    @checs.onlyGuild()
+    @Checks.onlyGuild()
     async def stats(self, interaction: Interaction,
         user: nextcord.User = SlashOption(
             name=lang("cmd_stats", "p1_name", "en-US"),
@@ -286,7 +292,7 @@ class QuotesCog(commands.Cog):
         name_localizations=lang.localizations("cmd_stats_top", "name"),
         description_localizations=lang.localizations("cmd_stats_top", "description")
     )
-    @checs.onlyGuild()
+    @Checks.onlyGuild()
     async def stats_top(self, interaction: Interaction,
         mode: int = SlashOption(
             name=lang("cmd_stats_top", "p1_name", "en-US"),

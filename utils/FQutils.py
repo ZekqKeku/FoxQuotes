@@ -4,6 +4,7 @@ import datetime
 import calendar
 import importlib
 import inspect
+import aiohttp
 from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter, ImageStat
 from pathlib import Path
 import math
@@ -23,9 +24,6 @@ class ConfigReader:
 
     def get_bot_token(self):
         return self.config_data.get("bot", {}).get("token", "")
-
-    def get_bot_id(self):
-        return self.config_data.get("bot", {}).get("id", "")
 
     def get_supervisors(self):
         return self.config_data.get("discord", {}).get("supervisors", [])
@@ -326,7 +324,18 @@ class FQimage:
 
 
     # === Main Image Rendering / Główna metoda generująca obraz ===
-    def generate_image(self, data: dict) -> Image.Image:
+    async def fetch_image(self, url: str) -> Image.Image:
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, timeout=10) as response:
+                    if response.status == 200:
+                        data = await response.read()
+                        return Image.open(BytesIO(data))
+        except Exception as e:
+            print(f" > [FQimage] Error fetching image from {url}: {e}")
+        return None
+
+    async def generate_image(self, data: dict) -> Image.Image:
         avatar = data["avatar"].convert("RGBA")
         username = data["username"]
         content = data["content"]
@@ -337,21 +346,59 @@ class FQimage:
         ping_map = data["ping_map"]
         ping_color = data["ping_color"]
 
+        bg_mode = data.get("background_mode", "avatar")
+        bg_url = data.get("background_url")
+        bg_postprocess = data.get("bg_postproces", True)
+
         if isinstance(date, datetime.datetime):
             date = date.strftime("%Y")
         date = f"~{date[:1]}k{date[2:]}"
 
         img = Image.new("RGBA", (self.width, self.height), self.bg_color)
-        draw = ImageDraw.Draw(img)
 
-        # Avatar background
-        avatar_bg = avatar.resize((self.width, self.width)).convert("L").convert("RGBA")
-        avatar_normalized = self.normalize_brightness(avatar_bg)
-        avatar_blur = avatar_normalized.filter(ImageFilter.GaussianBlur(self.avatar_background_blur_radius))
-        avatar_blur.putalpha(int(255 * self.avatar_background_opacity))
-        layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        layer.paste(avatar_blur, (0, -int(self.height / 2)), avatar_blur)
-        img = Image.alpha_composite(img, layer)
+        # --- Background Logic ---
+        background_img = None
+        if bg_mode == "url" and bg_url:
+            background_img = await self.fetch_image(bg_url)
+
+        # Default to avatar background if mode is 'avatar' or if URL fetch failed
+        if background_img is None:
+            background_img = avatar.copy()
+
+        # Process Background
+        background_img = background_img.convert("RGBA")
+
+        # Aspect fill resize
+        bg_w, bg_h = background_img.size
+        aspect_ratio = bg_w / bg_h
+        target_ratio = self.width / self.height
+
+        if aspect_ratio > target_ratio:
+            # Image is wider than target
+            new_h = self.height
+            new_w = int(new_h * aspect_ratio)
+        else:
+            # Image is taller than target
+            new_w = self.width
+            new_h = int(new_w / aspect_ratio)
+
+        background_img = background_img.resize((new_w, new_h), Image.LANCZOS)
+
+        # Center crop
+        left = (new_w - self.width) / 2
+        top = (new_h - self.height) / 2
+        background_img = background_img.crop((int(left), int(top), int(left + self.width), int(top + self.height)))
+
+        if bg_postprocess:
+            background_img = background_img.convert("L").convert("RGBA")
+            background_img = self.normalize_brightness(background_img)
+            background_img = background_img.filter(ImageFilter.GaussianBlur(self.avatar_background_blur_radius))
+            background_img.putalpha(int(255 * self.avatar_background_opacity))
+
+        img.alpha_composite(background_img)
+
+        # --- Foreground Elements ---
+        draw = ImageDraw.Draw(img)
 
         # Avatar foreground with shadow
         avatar_foreground = ImageEnhance.Color(avatar.resize(self.avatar_foreground_size)).enhance(0.5)

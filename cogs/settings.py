@@ -7,7 +7,7 @@ from PIL import Image
 from io import BytesIO
 import re
 
-from utils import FQutils, FQdatabase, checs
+from utils import FQutils, FQdatabase, Checks
 from lang import lang
 from utils.FQutils import DateTools
 
@@ -167,7 +167,7 @@ class SettingsCog(commands.Cog):
             "background_url": self.database.getGuildBgUrl(interaction.guild.id),
             "bg_postproces": self.database.getGuildBgPost(interaction.guild.id)
         }
-        result_img = self.image_tool.generate_image(image_data)
+        result_img = await self.image_tool.generate_image(image_data)
 
         buffer = BytesIO()
         result_img.save(buffer, format="PNG")
